@@ -31,7 +31,8 @@
     "onCommand:grammarly.logout",
     "onLanguage:plaintext",
     "onLanguage:markdown",
-    "onLanguage:html"
+    "onLanguage:html",
+    "onLanguage:latex"
   ],
   "contributes": {
     "configuration": {

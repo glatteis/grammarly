@@ -1,6 +1,7 @@
 import Parser from 'web-tree-sitter'
 import { html } from './LanguageHTML'
 import { markdown } from './LanguageMarkdown'
+import { latex } from './LanguageLaTeX'
 
 export type { SourceMap, Transformer } from './Language'
 
@@ -42,4 +43,4 @@ export async function createParser(language: string): Promise<Parser> {
   }
 }
 
-export const transformers = { html, markdown } as const
+export const transformers = { html, markdown, latex } as const

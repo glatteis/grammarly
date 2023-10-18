@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url'
 const packageNameByLanguage = {
   html: 'tree-sitter-html',
   markdown: 'tree-sitter-markdown',
+  latex: '@pfoerster/tree-sitter-latex',
 }
 
 const __filename = fileURLToPath(import.meta.url)
@@ -17,5 +18,7 @@ for (const language in packageNameByLanguage) {
   execSync(`$(pnpm bin)/tree-sitter build-wasm ${resolve(rootDir, `node_modules/${packageName}`)}`, {
     stdio: 'inherit',
   })
-  execSync(`mv ${packageName}.wasm tree-sitter/tree-sitter-${language}.wasm`, { stdio: 'inherit' })
+  // tree-sitter will output file with package name without first part (author)
+  const splitPackageName = packageName.split("/")
+  execSync(`mv ${splitPackageName.slice(-1)}.wasm tree-sitter/tree-sitter-${language}.wasm`, { stdio: 'inherit' })
 }
